@@ -94,7 +94,6 @@ var isTypeIncluded = function(theType, thePwd)
 
 var typeCheck = function(thePwd)
 {
-    debugger;
     var requiredTypesIncluded;
     requiredTypesIncluded = 
             isTypeIncluded(lowerInfo, thePwd)
