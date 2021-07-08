@@ -71,6 +71,40 @@ var getCharsToUse = function()
     return charsToUse;
 }
 
+var isTypeIncluded = function(theType, thePwd)
+{
+    var typeIncluded = false;
+    if (theType.required)
+    {
+        for (var i = 0; i < thePwd.length && !typeIncluded; i++)
+        {
+            if (theType.theChars.includes(thePwd[i]))
+            {
+                typeIncluded = true; // as soon as one of the characters is found, we can stop checking
+            }
+        }
+    }
+    else
+    {
+        typeIncluded = true;
+    }
+
+    return typeIncluded;
+}
+
+var typeCheck = function(thePwd)
+{
+    debugger;
+    var requiredTypesIncluded;
+    requiredTypesIncluded = 
+            isTypeIncluded(lowerInfo, thePwd)
+            && isTypeIncluded(upperInfo, thePwd)
+            && isTypeIncluded(numericInfo, thePwd)
+            && isTypeIncluded(specialInfo, thePwd);
+
+    return requiredTypesIncluded;
+}
+
 var generatePassword = function()
 {
     var thePwd = "";    
@@ -81,13 +115,19 @@ var generatePassword = function()
     // find out which character types can be used and which types are required
     var charsToUse = getCharsToUse();
 
-    // generate the password that includes the desired character types
     var numPotentialChars = charsToUse.length;
     
-    for (var i = 0; i < pwdLength; i++)
+    var requiredsIncluded = false;
+    while (!requiredsIncluded)
     {
-        var loc = Math.floor(Math.random() * numPotentialChars);        
-        thePwd += charsToUse.charAt(loc);
+        // generate the password
+        for (var i = 0; i < pwdLength; i++)
+        {
+            var loc = Math.floor(Math.random() * numPotentialChars);        
+            thePwd += charsToUse.charAt(loc);
+        }
+        // check that the password has at least one of each required character type
+        requiredsIncluded = typeCheck(thePwd);
     }
 
     // check that the generated password includes any character types
