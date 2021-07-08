@@ -2,7 +2,6 @@
 const minPwdLength = 8;
 const maxPwdLength = 128;
 
-
 var lowerInfo = {
     theChars: "abcdefghijklmnopqrstuvwxyz",
     required: false,
@@ -26,6 +25,27 @@ var specialInfo = {
     required: false,
     name: "special"
 }
+
+
+var generatePassword = function()
+{
+    // get the desired password length (8-128 characters)
+    
+    // find out which character types can be used and which types are required
+
+    // generate the password that includes the desired character types
+
+    // check that the generated password includes any character types
+    // that are required
+
+    var thePwd = "";    
+    return thePwd;
+}
+
+
+
+
+
 
 
 
