@@ -26,10 +26,25 @@ var specialInfo = {
     name: "special"
 }
 
+var getPasswordLength = function ()
+{
+    var pwdPrompt = "How long do you want the password to be? (minimum of " + minPwdLength + " characters, maximum of " + maxPwdLength + ":";
+    var pwdLength = window.prompt(pwdPrompt);
+    while (pwdLength < minPwdLength || pwdLength > maxPwdLength)
+    {
+        window.alert("That is not a valid length. Please try again.");
+        return getPasswordLength();
+    }
+
+    return pwdLength;
+}
 
 var generatePassword = function()
 {
+    var thePwd = "";    
+
     // get the desired password length (8-128 characters)
+    var pwdLength = getPasswordLength();
     
     // find out which character types can be used and which types are required
 
@@ -38,7 +53,6 @@ var generatePassword = function()
     // check that the generated password includes any character types
     // that are required
 
-    var thePwd = "";    
     return thePwd;
 }
 
