@@ -82,7 +82,13 @@ var generatePassword = function()
     var charsToUse = getCharsToUse();
 
     // generate the password that includes the desired character types
+    var numPotentialChars = charsToUse.length;
     
+    for (var i = 0; i < pwdLength; i++)
+    {
+        var loc = Math.floor(Math.random() * numPotentialChars);        
+        thePwd += charsToUse.charAt(loc);
+    }
 
     // check that the generated password includes any character types
     // that are required
