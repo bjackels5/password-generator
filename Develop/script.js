@@ -39,6 +39,38 @@ var getPasswordLength = function ()
     return pwdLength;
 }
 
+var checkTypeRequirements = function(theType)
+{
+    var chars = "";
+
+    if (window.confirm("Do you want to include " + theType.name + " characters?"))
+    {
+        chars += theType.theChars;
+        theType.required = window.confirm("Do you want to require at least 1 " + theType.name + " character?");
+    }
+
+    return chars;
+}
+
+var getCharsToUse = function()
+{
+    var charsToUse = "";
+    debugger;
+
+    charsToUse += checkTypeRequirements(lowerInfo);
+    charsToUse += checkTypeRequirements(upperInfo);
+    charsToUse += checkTypeRequirements(numericInfo);
+    charsToUse += checkTypeRequirements(specialInfo);
+
+    if (charsToUse === "")
+    {
+        window.alert("You have not chosen any character types to use for the password. Please select at least one character type to include.");
+        return getCharsToUse();
+    }
+
+    return charsToUse;
+}
+
 var generatePassword = function()
 {
     var thePwd = "";    
@@ -47,8 +79,10 @@ var generatePassword = function()
     var pwdLength = getPasswordLength();
     
     // find out which character types can be used and which types are required
+    var charsToUse = getCharsToUse();
 
     // generate the password that includes the desired character types
+    
 
     // check that the generated password includes any character types
     // that are required
