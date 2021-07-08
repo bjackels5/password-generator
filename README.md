@@ -33,7 +33,7 @@ This third challenge for the Coding Bootcamp is to use javascript to add to an e
 <a id="webImage"></a>
 
 
-![Password Generator](./Develop/PwdGeneratorScreenshot.png)
+![Password Generator](./assets/images/PwdGeneratorScreenshot.png)
 
 
 ---
